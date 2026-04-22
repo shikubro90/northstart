@@ -9,12 +9,12 @@ export default function ContactSection() {
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#050505]">
         <Image
           src={backgroundImage}
           alt="Northstar background"
           fill
-          className="object-cover"
+          className="object-cover object-center brightness-110 contrast-105 saturate-110"
           priority
           quality={100}
         />
@@ -55,9 +55,26 @@ export default function ContactSection() {
             </div>
 
             {/* Contact Email */}
-            <p className="text-lg md:text-xl text-white/80">
+            <a
+              href="mailto:info@nstarassoc.com"
+              className="flex items-center justify-center gap-3 text-[24px] font-bold text-white/80 transition-colors hover:text-white"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
               info@nstarassoc.com
-            </p>
+            </a>
           </div>
         </div>
 

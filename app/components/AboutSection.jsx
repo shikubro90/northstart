@@ -8,12 +8,12 @@ export default function AboutSection() {
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#050505]">
         <Image
           src={backgroundImage}
           alt="Northstar background"
           fill
-          className="object-cover"
+          className="object-cover object-center brightness-110 contrast-105 saturate-110"
           quality={100}
         />
         {/* Burgundy overlay for 2nd page */}

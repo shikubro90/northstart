@@ -166,13 +166,13 @@ export default function Slider() {
     >
 
       {/* ── Fixed background image (always behind everything) ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
         <Image
           src={backgroundImage}
           alt="Northstar background"
           fill
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center brightness-110 contrast-105 saturate-110"
           priority
           quality={100}
           unoptimized
@@ -223,10 +223,27 @@ export default function Slider() {
           >
             <polygon points="50,5 61,39 98,39 67,59 79,91 50,70 21,91 33,59 2,39 39,39" />
           </svg>
-          <p className="text-2xl font-light tracking-[0.08em] text-white/90">
+          <a
+            href="mailto:info@nstarassoc.com"
+            className="flex items-center justify-center gap-3 text-[24px] font-bold tracking-[0.08em] text-white/90 transition-colors hover:text-white"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
             info@nstarassoc.com
-          </p>
-          <p className="text-[11px] tracking-[0.2em] text-white/60 uppercase mt-2">
+          </a>
+          <p className="text-[18px] tracking-[0.2em] text-white/60 uppercase mt-2">
             Track record available upon request for accredited investors
           </p>
         </div>
@@ -343,10 +360,27 @@ export default function Slider() {
             <svg width="34" height="34" viewBox="0 0 100 100" fill="none" stroke="white" strokeWidth="2.5" strokeLinejoin="round" className="opacity-65 mb-2">
               <polygon points="50,5 61,39 98,39 67,59 79,91 50,70 21,91 33,59 2,39 39,39" />
             </svg>
-            <p className="text-lg sm:text-xl font-light tracking-[0.08em] text-white/90">
+            <a
+              href="mailto:info@nstarassoc.com"
+              className="flex items-center justify-center gap-3 text-[24px] font-bold tracking-[0.08em] text-white/90 transition-colors hover:text-white"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
               info@nstarassoc.com
-            </p>
-            <p className="text-[11px] tracking-[0.2em] text-white/60 uppercase mt-2">
+            </a>
+            <p className="text-[18px] tracking-[0.2em] text-white/60 uppercase mt-2">
               Track record available upon request for accredited investors
             </p>
           </div>
