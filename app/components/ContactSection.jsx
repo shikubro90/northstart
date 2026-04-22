@@ -26,8 +26,8 @@ export default function ContactSection() {
       <div className="relative z-10 flex flex-col h-full text-white">
         <Navigation />
 
-        <div className="flex-1 flex flex-col items-center justify-center px-4">
-          <div className="text-center">
+        <div className="flex-1 flex flex-col items-center justify-center px-14 md:px-4">
+          <div className="w-full max-w-[860px] text-center">
 
             {/* Subtle Pentagram */}
             <div className="flex justify-center mb-6 opacity-40">
@@ -57,7 +57,7 @@ export default function ContactSection() {
             {/* Contact Email */}
             <a
               href="mailto:info@nstarassoc.com"
-              className="flex items-center justify-center gap-3 text-[24px] font-bold text-white/80 transition-colors hover:text-white"
+              className="flex max-w-full flex-wrap items-center justify-center gap-2 md:gap-3 text-[20px] sm:text-[22px] md:text-[24px] font-bold tracking-[0.04em] md:tracking-normal text-white/80 transition-colors hover:text-white"
             >
               <svg
                 width="24"

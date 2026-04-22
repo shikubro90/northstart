@@ -24,11 +24,11 @@ export default function AboutSection() {
       <div className="relative z-10 flex flex-col h-full text-white">
         <Navigation />
 
-        <div className="flex-1 flex flex-col items-center justify-center px-4 max-w-4xl mx-auto text-center">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed mb-6">
-            Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. market.
+        <div className="flex-1 flex flex-col items-center justify-center px-14 md:px-4 max-w-4xl mx-auto text-center">
+          <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] md:leading-[1.75] mb-2">
+            Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
           </p>
-          <p className="text-sm md:text-base font-light tracking-wide text-white/70 uppercase">
+          <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] md:leading-[1.75] text-white">
             Accredited investors only.
           </p>
         </div>

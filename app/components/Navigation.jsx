@@ -43,9 +43,10 @@ export default function Navigation() {
           <button
             key={item}
             onClick={() => scrollToSection(index)}
-            className={`text-sm uppercase tracking-wider transition-all duration-300 ${activeSection === index
-              ? "text-white border-b border-white/50 pb-1"
-              : "text-white/50 hover:text-white/80"
+            className={`text-[14px] font-bold uppercase tracking-wider transition-all duration-300 ${
+              activeSection === index
+                ? "text-white"
+                : "text-white/70 hover:text-white hover:border-b hover:border-white hover:pb-1"
               }`}
           >
             {item}

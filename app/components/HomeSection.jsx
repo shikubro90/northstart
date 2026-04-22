@@ -25,7 +25,7 @@ export default function HomeSection() {
       <div className="relative z-10 flex flex-col h-full text-white">
         <Navigation />
 
-        <div className="flex-1 flex flex-col items-center justify-center px-4">
+        <div className="flex-1 flex flex-col items-center justify-center px-14 md:px-4">
           <div className="text-center">
             <h1 className="text-7xl md:text-8xl lg:text-9xl font-light tracking-wide mb-4">
               Northstar

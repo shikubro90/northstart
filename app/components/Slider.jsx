@@ -166,15 +166,13 @@ export default function Slider() {
     >
 
       {/* ── Fixed background image (always behind everything) ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
+      <div className="fixed inset-0 z-0 pointer-events-none bg-black overflow-hidden">
         <Image
           src={backgroundImage}
           alt="Northstar background"
           fill
-          sizes="100vw"
-          className="object-cover object-center brightness-110 contrast-105 saturate-110"
+          className="object-cover object-bottom brightness-110 contrast-105 saturate-110"
           priority
-          quality={100}
           unoptimized
         />
         {/* Subtle veil on home */}
@@ -201,10 +199,10 @@ export default function Slider() {
         className="fixed inset-0 z-20 bg-[#800020] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
         <div className="max-w-[860px] mx-auto">
-          <p className="text-3xl lg:text-[38px] font-light leading-snug mb-10 text-white">
-            Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. market.
+          <p className="text-[30px] font-light leading-[1.75] mb-2 text-white">
+            Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
           </p>
-          <p className="text-sm font-normal tracking-[0.25em] text-white/65 uppercase">
+          <p className="text-[30px] font-light leading-[1.75] text-white">
             Accredited investors only.
           </p>
         </div>
@@ -213,26 +211,28 @@ export default function Slider() {
       {/* Contact panel — z-30 (on top of About) */}
       <div
         ref={panel2Ref}
-        className="fixed inset-0 z-30 bg-[#800020] hidden md:flex flex-col items-center justify-center px-4 text-center"
+        className="fixed inset-0 z-30 bg-[#800020] hidden md:flex flex-col items-center justify-center px-12 text-center"
       >
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-5 md:gap-6 max-w-[900px]">
           <svg
-            width="34" height="34" viewBox="0 0 100 100"
-            fill="none" stroke="white" strokeWidth="2.5" strokeLinejoin="round"
-            className="opacity-65 mb-2"
+            width="52" height="52" viewBox="0 0 100 100"
+            fill="none" stroke="white" strokeLinejoin="round" strokeLinecap="round"
+            className="mb-2"
+            style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.4))" }}
           >
-            <polygon points="50,5 61,39 98,39 67,59 79,91 50,70 21,91 33,59 2,39 39,39" />
+            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1.5" stroke="rgba(255,255,255,0.3)" />
+            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1" />
           </svg>
           <a
             href="mailto:info@nstarassoc.com"
-            className="flex items-center justify-center gap-3 text-[24px] font-bold tracking-[0.08em] text-white/90 transition-colors hover:text-white"
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-[20px] sm:text-[22px] md:text-[24px] font-bold tracking-[0.04em] md:tracking-[0.08em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
           >
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="rgba(255,255,255,0.75)"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -243,8 +243,8 @@ export default function Slider() {
             </svg>
             info@nstarassoc.com
           </a>
-          <p className="text-[18px] tracking-[0.2em] text-white/60 uppercase mt-2">
-            Track record available upon request for accredited investors
+          <p className="text-[16px] sm:text-[18px] md:text-[24px] font-[500] tracking-[0.08em] md:tracking-[0.15em] leading-relaxed text-white/75 uppercase mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
+            Track record available upon request for accredited investors.
           </p>
         </div>
         <div className="absolute bottom-10 w-full text-center text-xs tracking-wider text-white/45 px-4">
@@ -280,12 +280,12 @@ export default function Slider() {
             <button
               key={item}
               onClick={() => goToSection(index)}
-              className={`text-[12px] tracking-[0.2em] uppercase transition-all duration-300 relative ${
-                activeIndex === index ? "text-white" : "text-white/50 hover:text-white/80"
+              className={`group text-[14px] font-bold tracking-[0.2em] uppercase transition-all duration-300 relative ${
+                activeIndex === index ? "text-white" : "text-white/70 hover:text-white"
               }`}
             >
               {item}
-              <span className={`absolute left-0 -bottom-1 h-px bg-white transition-all duration-300 ${activeIndex === index ? "w-full" : "w-0"}`} />
+              <span className="absolute left-0 -bottom-1 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
         </div>
@@ -302,9 +302,12 @@ export default function Slider() {
               key={item}
               ref={(el) => { menuItemRefs.current[index] = el; }}
               onClick={() => goToSection(index)}
-              className="text-2xl tracking-[0.2em] uppercase text-white/90 hover:text-white transition-colors"
+              className={`relative group text-2xl font-bold tracking-[0.2em] uppercase transition-colors ${
+                activeIndex === index ? "text-white" : "text-white/70 hover:text-white"
+              }`}
             >
               {item}
+              <span className="absolute left-0 -bottom-2 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
         </div>
@@ -318,15 +321,6 @@ export default function Slider() {
           id="section-0"
           className={`w-full ${isMobile ? "min-h-[100dvh] snap-start" : "h-[100dvh]"} flex flex-col items-center justify-center relative px-4`}
         >
-          <div className="text-center">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-light tracking-wide mb-6 text-white">
-              Northstar
-            </h1>
-            <div className="flex justify-center gap-3">
-              <div className="w-16 md:w-20 h-px bg-white/60" />
-              <div className="w-6 md:w-8 h-px bg-white/60" />
-            </div>
-          </div>
           <button
             onClick={() => goToSection(1)}
             className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
@@ -340,13 +334,13 @@ export default function Slider() {
         {/* About + Contact — mobile only (desktop uses fixed panels above) */}
         <section
           id="section-1"
-          className="md:hidden w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center px-6 text-center py-24"
+          className="md:hidden w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center px-14 text-center py-24"
         >
           <div className="max-w-[860px] mx-auto">
-            <p className="text-xl sm:text-[26px] font-light leading-snug mb-10 text-white">
-              Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. market.
+            <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] mb-2 text-white">
+              Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
             </p>
-            <p className="text-[11px] font-normal tracking-[0.25em] text-white/65 uppercase">
+            <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] text-white">
               Accredited investors only.
             </p>
           </div>
@@ -354,22 +348,23 @@ export default function Slider() {
 
         <section
           id="section-2"
-          className="md:hidden w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center relative px-4 text-center"
+          className="md:hidden w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center relative px-14 text-center"
         >
-          <div className="flex flex-col items-center gap-6">
-            <svg width="34" height="34" viewBox="0 0 100 100" fill="none" stroke="white" strokeWidth="2.5" strokeLinejoin="round" className="opacity-65 mb-2">
-              <polygon points="50,5 61,39 98,39 67,59 79,91 50,70 21,91 33,59 2,39 39,39" />
+          <div className="flex w-full max-w-[860px] flex-col items-center gap-5">
+            <svg width="52" height="52" viewBox="0 0 100 100" fill="none" stroke="white" strokeLinejoin="round" strokeLinecap="round" className="mb-2" style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.4))" }}>
+              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1.5" stroke="rgba(255,255,255,0.3)" />
+              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1" />
             </svg>
             <a
               href="mailto:info@nstarassoc.com"
-              className="flex items-center justify-center gap-3 text-[24px] font-bold tracking-[0.08em] text-white/90 transition-colors hover:text-white"
+              className="flex max-w-full flex-wrap items-center justify-center gap-2 text-[20px] sm:text-[22px] font-bold tracking-[0.04em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
             >
               <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                stroke="rgba(255,255,255,0.75)"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -380,8 +375,8 @@ export default function Slider() {
               </svg>
               info@nstarassoc.com
             </a>
-            <p className="text-[18px] tracking-[0.2em] text-white/60 uppercase mt-2">
-              Track record available upon request for accredited investors
+            <p className="mx-auto max-w-[260px] sm:max-w-[340px] text-[16px] sm:text-[18px] font-[500] tracking-[0.08em] leading-relaxed text-white/75 uppercase mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
+              Track record available upon request for accredited investors.
             </p>
           </div>
           <div className="absolute bottom-8 w-full text-center text-[10px] tracking-wider text-white/45 px-4">
