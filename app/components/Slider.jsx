@@ -185,7 +185,7 @@ export default function Slider() {
         {/* Mobile-only: burgundy overlay driven by scroll progress */}
         <div
           ref={burgundyOverlayRef}
-          className={`absolute inset-0 bg-[#800020] transition-opacity duration-700 md:hidden ${
+          className={`absolute inset-0 bg-[#A8415B] transition-opacity duration-700 md:hidden ${
             activeIndex > 0 ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -196,7 +196,7 @@ export default function Slider() {
       {/* About panel — z-20 */}
       <div
         ref={panel1Ref}
-        className="fixed inset-0 z-20 bg-[#800020] hidden md:flex flex-col items-center justify-center px-20 text-center"
+        className="fixed inset-0 z-20 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
         <div className="max-w-[860px] mx-auto">
           <p className="text-[30px] font-light leading-[1.75] mb-2 text-white">
@@ -211,7 +211,7 @@ export default function Slider() {
       {/* Contact panel — z-30 (on top of About) */}
       <div
         ref={panel2Ref}
-        className="fixed inset-0 z-30 bg-[#800020] hidden md:flex flex-col items-center justify-center px-12 text-center"
+        className="fixed inset-0 z-30 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-12 text-center"
       >
         <div className="flex flex-col items-center gap-5 md:gap-6 max-w-[900px]">
           <svg
@@ -294,7 +294,7 @@ export default function Slider() {
       {/* ── Mobile full-screen menu ── */}
       <div
         ref={menuOverlayRef}
-        className="fixed inset-0 bg-[#800020] z-50 hidden flex-col items-center justify-center"
+        className="fixed inset-0 bg-[#A8415B] z-50 hidden flex-col items-center justify-center"
       >
         <div className="flex flex-col gap-12 items-center">
           {navItems.map((item, index) => (
