@@ -31,7 +31,7 @@ export default function Navigation() {
   const navItems = ["Home", "About", "Contact"];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 z-20 px-6 md:px-12 py-2 flex justify-between items-center">
       {/* Logo */}
       <div className="text-xl font-light tracking-wider text-white">
         Northstar
