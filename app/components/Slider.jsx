@@ -314,7 +314,7 @@ export default function Slider() {
             onClick={() => goToSection(1)}
             className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
           >
-            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce opacity-70">
+            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="white" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce opacity-80">
               <polyline points="4,7 10,13 16,7" />
             </svg>
           </button>
