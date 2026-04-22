@@ -12,12 +12,27 @@ export default function Slider() {
   const currentIndexRef = useRef(0);
   const isAnimatingRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const isMobileRef = useRef(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const goToSection = (index) => {
     if (!wrapperRef.current) return;
     if (index < 0 || index >= SECTION_COUNT) return;
-    if (isAnimatingRef.current) return;
+    
+    // On mobile, native smooth scroll
+    if (isMobileRef.current) {
+      setActiveIndex(index);
+      currentIndexRef.current = index;
+      setIsMenuOpen(false);
+      const section = document.getElementById(`section-${index}`);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
 
+    if (isAnimatingRef.current) return;
     isAnimatingRef.current = true;
     currentIndexRef.current = index;
     setActiveIndex(index);
@@ -36,17 +51,19 @@ export default function Slider() {
     let startX = 0;
 
     const handleWheel = (e) => {
-      if (isAnimatingRef.current) return;
+      if (isMobileRef.current || isAnimatingRef.current) return;
 
       if (e.deltaY > 0) goToSection(currentIndexRef.current + 1);
       else goToSection(currentIndexRef.current - 1);
     };
 
     const handleTouchStart = (e) => {
+      if (isMobileRef.current) return;
       startX = e.touches[0].clientX;
     };
 
     const handleTouchEnd = (e) => {
+      if (isMobileRef.current) return;
       const endX = e.changedTouches[0].clientX;
       const diff = startX - endX;
 
@@ -57,10 +74,39 @@ export default function Slider() {
     };
 
     const handleResize = () => {
-      gsap.set(wrapperRef.current, {
-        x: -currentIndexRef.current * window.innerWidth,
-      });
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      isMobileRef.current = mobile;
+
+      if (mobile) {
+        gsap.set(wrapperRef.current, { x: 0 });
+      } else {
+        gsap.set(wrapperRef.current, {
+          x: -currentIndexRef.current * window.innerWidth,
+        });
+      }
     };
+
+    // Initial check
+    handleResize();
+
+    // Mobile scroll tracking
+    const handleScroll = () => {
+      if (!isMobileRef.current || !wrapperRef.current) return;
+      const scrollY = wrapperRef.current.parentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const newIndex = Math.round(scrollY / windowHeight);
+      
+      if (newIndex !== currentIndexRef.current && newIndex >= 0 && newIndex < SECTION_COUNT) {
+        setActiveIndex(newIndex);
+        currentIndexRef.current = newIndex;
+      }
+    };
+
+    const parentEl = wrapperRef.current?.parentElement;
+    if (parentEl) {
+      parentEl.addEventListener("scroll", handleScroll, { passive: true });
+    }
 
     window.addEventListener("wheel", handleWheel, { passive: true });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
@@ -72,15 +118,18 @@ export default function Slider() {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("resize", handleResize);
+      if (parentEl) {
+        parentEl.removeEventListener("scroll", handleScroll);
+      }
     };
   }, []);
 
   const navItems = ["Home", "About", "Contact"];
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
+    <div className={`relative h-[100dvh] w-screen bg-black text-white ${isMobile ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden"}`}>
       {/* Fixed Background Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
           src={backgroundImage}
           alt="Northstar background"
@@ -90,59 +139,102 @@ export default function Slider() {
           quality={100}
         />
         {/* Dark overlay for Home readability */}
-        <div 
-          className={`absolute inset-0 bg-black/20 transition-opacity duration-700 ${
-            activeIndex === 0 ? "opacity-100" : "opacity-0"
-          }`}
+        <div
+          className={`absolute inset-0 bg-black/20 transition-opacity duration-700 ${activeIndex === 0 ? "opacity-100" : "opacity-0"
+            }`}
         ></div>
         {/* Burgundy overlay for About & Contact */}
-        <div 
-          className={`absolute inset-0 bg-[#800020]/75 transition-opacity duration-700 ${
-            activeIndex > 0 ? "opacity-100" : "opacity-0"
-          }`}
+        <div
+          className={`absolute inset-0 bg-[#800020]/75 transition-opacity duration-700 ${activeIndex > 0 ? "opacity-100" : "opacity-0"
+            }`}
         ></div>
       </div>
 
-      {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-20 px-8 md:px-16 pt-2 flex justify-between items-center pointer-events-none">
+      {/* Navigation Bar */}
+      <nav 
+        className="fixed top-8 left-0 w-full z-[60] flex items-center justify-between pointer-events-none"
+        style={{ paddingLeft: 'max(2rem, 8vw)', paddingRight: 'max(2rem, 8vw)' }}
+      >
         {/* Logo */}
-        <div className="text-xl md:text-2xl font-normal tracking-wider pointer-events-auto">
+        <div className="text-lg md:text-xl font-light tracking-[0.15em] text-white/90 pointer-events-auto">
           Northstar
         </div>
 
-        {/* Links */}
-        <div className="hidden md:flex gap-10 pointer-events-auto">
+        {/* Hamburger Menu (Mobile) */}
+        <button 
+          className="md:hidden text-white pointer-events-auto transition-transform duration-300 hover:scale-110"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            {isMenuOpen ? (
+              <>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </>
+            )}
+          </svg>
+        </button>
+
+        {/* Links (Desktop) */}
+        <div className="hidden md:flex items-center gap-10 pointer-events-auto">
           {navItems.map((item, index) => (
             <button
               key={item}
               onClick={() => goToSection(index)}
-              className={`text-[13px] uppercase tracking-widest transition-all duration-300 border-b pb-1 ${
-                activeIndex === index
-                  ? "text-white border-white"
-                  : "text-white/60 border-transparent hover:text-white/90"
-              }`}
+              className={`text-[12px] tracking-[0.2em] uppercase transition-all duration-300 relative ${activeIndex === index
+                ? "text-white"
+                : "text-white/50 hover:text-white/80"
+                }`}
             >
               {item}
+              {/* Active underline */}
+              <span
+                className={`absolute left-0 -bottom-1 h-px bg-white transition-all duration-300 ${activeIndex === index ? "w-full" : "w-0"
+                  }`}
+              />
             </button>
           ))}
         </div>
       </nav>
 
-      {/* Scrolling Content Wrapper */}
+      {/* Mobile Full-Screen Menu Overlay */}
       <div 
+        className={`fixed inset-0 bg-[#0F172A] z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden flex flex-col items-center justify-center`}
+      >
+        <div className="flex flex-col gap-12 items-center">
+          {navItems.map((item, index) => (
+            <button
+              key={item}
+              onClick={() => goToSection(index)}
+              className="text-2xl tracking-[0.2em] uppercase text-white/90 hover:text-white transition-colors"
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Scrolling Content Wrapper */}
+      <div
         ref={wrapperRef}
-        className="relative z-10 flex h-full will-change-transform"
-        style={{ width: `${SECTION_COUNT * 100}vw` }}
+        className={`relative z-10 flex ${isMobile ? "flex-col w-full" : "h-full will-change-transform"}`}
+        style={!isMobile ? { width: `${SECTION_COUNT * 100}vw` } : {}}
       >
         {/* Home Section */}
-        <section className="w-screen h-full flex flex-col items-center justify-center relative px-4">
-          <div className="text-center">
-            <h1 className="text-7xl md:text-8xl lg:text-[9rem] font-light tracking-wide mb-6">
+        <section id="section-0" className={`w-full ${isMobile ? "min-h-[100dvh]" : "w-screen h-full"} flex flex-col items-center justify-center relative px-4`}>
+          <div className="text-center mt-10 md:mt-0">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-light tracking-wide mb-6">
               Northstar
             </h1>
             <div className="flex justify-center gap-3">
-              <div className="w-20 h-px bg-white/60"></div>
-              <div className="w-8 h-px bg-white/60"></div>
+              <div className="w-16 md:w-20 h-px bg-white/60"></div>
+              <div className="w-6 md:w-8 h-px bg-white/60"></div>
             </div>
           </div>
 
@@ -155,25 +247,26 @@ export default function Slider() {
         </section>
 
         {/* About Section */}
-        <section className="w-screen h-full flex flex-col items-center justify-center px-6 md:px-20 text-center">
-          <div className="max-w-[900px] mx-auto">
-            <p className="text-[26px] md:text-3xl lg:text-[40px] font-light leading-snug mb-10 text-white/95">
+        <section id="section-1" className={`w-full ${isMobile ? "min-h-[100dvh] py-24" : "w-screen h-full"} flex flex-col items-center justify-center px-6 md:px-20 text-center`}>
+          <div className="max-w-[900px] mx-auto mt-10 md:mt-0">
+            <p className="text-xl sm:text-[26px] md:text-3xl lg:text-[40px] font-light leading-snug mb-10 text-white/95">
               Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. market.
             </p>
-            <p className="text-sm md:text-[15px] font-normal tracking-widest text-white/70 uppercase">
+            <p className="text-xs sm:text-sm md:text-[15px] font-normal tracking-widest text-white/70 uppercase">
               Accredited investors only.
             </p>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section className="w-screen h-full flex flex-col items-center justify-center relative px-4 text-center">
-          <div className="flex flex-col items-center">
+        <section id="section-2" className={`w-full ${isMobile ? "min-h-[100dvh] py-24" : "w-screen h-full"} flex flex-col items-center justify-center relative px-4 text-center`}>
+          <div className="flex flex-col items-center mt-10 md:mt-0">
             {/* Star Icon */}
             <div className="mb-6 opacity-60">
               <svg
-                width="36"
-                height="36"
+                width="30"
+                height="30"
+                className="md:w-[36px] md:h-[36px]"
                 viewBox="0 0 100 100"
                 fill="none"
                 stroke="white"
@@ -184,24 +277,24 @@ export default function Slider() {
             </div>
 
             {/* Title */}
-            <h1 className="text-7xl md:text-8xl lg:text-[9rem] font-light tracking-wide mb-6">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-light tracking-wide mb-6">
               Northstar
             </h1>
 
             {/* Divider */}
             <div className="flex justify-center gap-3 mb-8">
-              <div className="w-20 h-px bg-white/60"></div>
-              <div className="w-8 h-px bg-white/60"></div>
+              <div className="w-16 md:w-20 h-px bg-white/60"></div>
+              <div className="w-6 md:w-8 h-px bg-white/60"></div>
             </div>
 
             {/* Email */}
-            <p className="text-xl md:text-2xl font-light tracking-wide text-white/90">
+            <p className="text-lg sm:text-xl md:text-2xl font-light tracking-wide text-white/90">
               info@nstarassoc.com
             </p>
           </div>
 
           {/* Copyright */}
-          <div className="absolute bottom-10 w-full text-center text-xs tracking-wider text-white/50">
+          <div className="absolute bottom-8 md:bottom-10 w-full text-center text-[10px] sm:text-xs tracking-wider text-white/50 px-4">
             2026 Northstar Associates LLC All rights reserved.
           </div>
         </section>
