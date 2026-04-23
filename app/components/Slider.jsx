@@ -253,7 +253,7 @@ export default function Slider() {
         style={{ paddingLeft: "max(3rem, 10vw)", paddingRight: "max(3rem, 10vw)" }}
       >
         <div className="text-white font-semibold tracking-[0.12em] flex items-baseline pointer-events-auto" style={{ fontFamily: "var(--font-brix, 'DM Sans', sans-serif)" }}>
-          <span style={{ fontSize: "35px" }}>N</span>
+          <span style={{ fontSize: "44px" }}>n</span>
           <span style={{ fontSize: "35px" }}>orthstar</span>
         </div>
 

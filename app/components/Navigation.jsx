@@ -34,7 +34,7 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-20 px-6 md:px-12 py-2 flex justify-between items-center">
       {/* Logo */}
       <div className="text-white font-semibold tracking-[0.12em] flex items-baseline" style={{ fontFamily: "var(--font-brix, 'DM Sans', sans-serif)" }}>
-        <span style={{ fontSize: "35px" }}>N</span>
+        <span style={{ fontSize: "44px" }}>n</span>
         <span style={{ fontSize: "35px" }}>orthstar</span>
       </div>
 
