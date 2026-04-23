@@ -166,21 +166,16 @@ export default function Slider() {
     >
 
       {/* ── Fixed background image (always behind everything) ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-black overflow-hidden">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
           src={backgroundImage}
           alt="Northstar background"
           fill
-          className="object-cover object-bottom brightness-110 contrast-105 saturate-110"
+          className="object-cover object-center"
           priority
+          quality={100}
+          sizes="100vw"
           unoptimized
-        />
-        {/* Subtle veil on home */}
-        <div
-          ref={darkOverlayRef}
-          className={`absolute inset-0 bg-black/10 transition-opacity duration-700 ${
-            activeIndex === 0 ? "opacity-100" : "opacity-0"
-          }`}
         />
         {/* Mobile-only: burgundy overlay driven by scroll progress */}
         <div
@@ -199,10 +194,10 @@ export default function Slider() {
         className="fixed inset-0 z-20 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
         <div className="max-w-[1200px] mx-auto">
-          <p className="text-[30px] font-light leading-[1.75] mb-2 text-white">
+          <p className="text-[30px] font-light leading-[1.75] mb-10 text-white">
             Northstar is an alternative equity and fixed income strategies<br />manager specializing in diverse arbitrage transactions in the <span className="whitespace-nowrap">U.S. markets.</span>
           </p>
-          <p className="text-[20px] font-light leading-[1.75] text-white mt-6">
+          <p className="text-[20px] font-light leading-[1.75] text-white" style={{ marginTop: "18px" }}>
             * Accredited investors only.
           </p>
         </div>
