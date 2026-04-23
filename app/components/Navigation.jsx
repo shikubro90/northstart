@@ -33,8 +33,9 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-20 px-6 md:px-12 py-2 flex justify-between items-center">
       {/* Logo */}
-      <div className="text-xl font-light tracking-wider text-white">
-        Northstar
+      <div className="font-normal text-white flex items-baseline">
+        <span style={{ fontSize: "44px" }}>N</span>
+        <span style={{ fontSize: "35px" }} className="uppercase tracking-[0.12em]">orthstar</span>
       </div>
 
       {/* Navigation Links */}

@@ -202,7 +202,7 @@ export default function Slider() {
           <p className="text-[30px] font-light leading-[1.75] mb-2 text-white">
             Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
           </p>
-          <p className="text-[30px] font-light leading-[1.75] text-white">
+          <p className="text-[20px] font-light leading-[1.75] text-white mt-6">
             Accredited investors only.
           </p>
         </div>
@@ -215,13 +215,13 @@ export default function Slider() {
       >
         <div className="flex flex-col items-center gap-5 md:gap-6 max-w-[900px]">
           <svg
-            width="52" height="52" viewBox="0 0 100 100"
+            width="35" height="35" viewBox="0 0 100 100"
             fill="none" stroke="white" strokeLinejoin="round" strokeLinecap="round"
             className="mb-2"
             style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.4))" }}
           >
-            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1.5" stroke="rgba(255,255,255,0.3)" />
-            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1" />
+            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="2.5" stroke="rgba(255,255,255,0.3)" />
+            <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="2" />
           </svg>
           <a
             href="mailto:info@nstarassoc.com"
@@ -243,7 +243,7 @@ export default function Slider() {
             </svg>
             info@nstarassoc.com
           </a>
-          <p className="text-[16px] sm:text-[18px] md:text-[24px] font-[500] tracking-[0.08em] md:tracking-[0.15em] leading-relaxed text-white/75 uppercase mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
+          <p className="text-[20px] sm:text-[22px] md:text-[24px] font-[500] tracking-[0.04em] md:tracking-[0.08em] leading-relaxed text-white/75 mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
             Track record available upon request for accredited investors.
           </p>
         </div>
@@ -257,8 +257,9 @@ export default function Slider() {
         className="fixed top-10 left-0 w-full z-[60] flex items-center justify-between pointer-events-none"
         style={{ paddingLeft: "max(3rem, 10vw)", paddingRight: "max(3rem, 10vw)" }}
       >
-        <div className="text-xl md:text-2xl font-light tracking-[0.2em] text-white pointer-events-auto">
-          Northstar
+        <div className="font-normal text-white pointer-events-auto flex items-baseline">
+          <span style={{ fontSize: "44px" }}>N</span>
+          <span style={{ fontSize: "35px" }} className="uppercase tracking-[0.12em]">orthstar</span>
         </div>
 
         {/* Hamburger (mobile) */}
@@ -340,7 +341,7 @@ export default function Slider() {
             <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] mb-2 text-white">
               Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
             </p>
-            <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] text-white">
+            <p className="text-[16px] sm:text-[18px] md:text-[20px] font-light leading-[1.65] text-white mt-6">
               Accredited investors only.
             </p>
           </div>
@@ -351,9 +352,9 @@ export default function Slider() {
           className="md:hidden w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center relative px-14 text-center"
         >
           <div className="flex w-full max-w-[860px] flex-col items-center gap-5">
-            <svg width="52" height="52" viewBox="0 0 100 100" fill="none" stroke="white" strokeLinejoin="round" strokeLinecap="round" className="mb-2" style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.4))" }}>
-              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1.5" stroke="rgba(255,255,255,0.3)" />
-              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="1" />
+            <svg width="35" height="35" viewBox="0 0 100 100" fill="none" stroke="white" strokeLinejoin="round" strokeLinecap="round" className="mb-2" style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.4))" }}>
+              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="2.5" stroke="rgba(255,255,255,0.3)" />
+              <path d="M50,5 L76.4,86.4 L7.2,36.1 L92.8,36.1 L23.6,86.4 Z" strokeWidth="2" />
             </svg>
             <a
               href="mailto:info@nstarassoc.com"
@@ -375,7 +376,7 @@ export default function Slider() {
               </svg>
               info@nstarassoc.com
             </a>
-            <p className="mx-auto max-w-[260px] sm:max-w-[340px] text-[16px] sm:text-[18px] font-[500] tracking-[0.08em] leading-relaxed text-white/75 uppercase mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
+            <p className="mx-auto max-w-[260px] sm:max-w-[340px] text-[20px] sm:text-[22px] font-[500] tracking-[0.04em] leading-relaxed text-white/75 mt-2 underline underline-offset-4 decoration-white/40 transition-all duration-300 cursor-pointer hover:text-white hover:decoration-white">
               Track record available upon request for accredited investors.
             </p>
           </div>
