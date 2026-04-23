@@ -171,7 +171,7 @@ export default function Slider() {
           src={backgroundImage}
           alt="Northstar background"
           fill
-          className="object-cover object-center"
+          className="object-cover object-bottom"
           priority
           quality={100}
           sizes="100vw"
