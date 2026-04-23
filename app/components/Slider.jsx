@@ -257,9 +257,9 @@ export default function Slider() {
         className="fixed top-10 left-0 w-full z-[60] flex items-center justify-between pointer-events-none"
         style={{ paddingLeft: "max(3rem, 10vw)", paddingRight: "max(3rem, 10vw)" }}
       >
-        <div className="font-normal text-white pointer-events-auto flex items-baseline">
-          <span style={{ fontSize: "44px" }}>N</span>
-          <span style={{ fontSize: "35px" }} className="uppercase tracking-[0.12em]">orthstar</span>
+        <div className="text-white font-semibold tracking-[0.12em] flex items-baseline pointer-events-auto" style={{ fontFamily: "var(--font-brix, 'DM Sans', sans-serif)" }}>
+          <span style={{ fontSize: "35px" }}>N</span>
+          <span style={{ fontSize: "35px" }}>orthstar</span>
         </div>
 
         {/* Hamburger (mobile) */}

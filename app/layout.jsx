@@ -1,4 +1,4 @@
-import { Lato } from "next/font/google";
+import { Lato, Barlow } from "next/font/google";
 import "./globals.css";
 
 const lato = Lato({
@@ -6,6 +6,13 @@ const lato = Lato({
   weight: ["300", "400", "700"],
   display: "swap",
   variable: "--font-lato",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-brix",
 });
 
 export const metadata = {
@@ -25,7 +32,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} ${lato.className}`}>{children}</body>
+      <body className={`${lato.variable} ${barlow.variable} ${lato.className}`}>{children}</body>
     </html>
   );
 }
