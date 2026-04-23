@@ -198,12 +198,12 @@ export default function Slider() {
         ref={panel1Ref}
         className="fixed inset-0 z-20 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
-        <div className="max-w-[860px] mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <p className="text-[30px] font-light leading-[1.75] mb-2 text-white">
-            Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
+            Northstar is an alternative equity and fixed income strategies<br />manager specializing in diverse arbitrage transactions in the <span className="whitespace-nowrap">U.S. markets.</span>
           </p>
           <p className="text-[20px] font-light leading-[1.75] text-white mt-6">
-            Accredited investors only.
+            * Accredited investors only.
           </p>
         </div>
       </div>
@@ -339,10 +339,10 @@ export default function Slider() {
         >
           <div className="max-w-[860px] mx-auto">
             <p className="text-[24px] sm:text-[26px] md:text-[30px] font-light leading-[1.65] mb-2 text-white">
-              Northstar is an alternative equity and fixed income strategies manager specializing in diverse arbitrage transactions in the U.S. markets.
+              Northstar is an alternative equity and fixed income strategies manager specializing in diverse<br />arbitrage transactions in the <span className="whitespace-nowrap">U.S. markets.</span>
             </p>
             <p className="text-[16px] sm:text-[18px] md:text-[20px] font-light leading-[1.65] text-white mt-6">
-              Accredited investors only.
+              * Accredited investors only.
             </p>
           </div>
         </section>
