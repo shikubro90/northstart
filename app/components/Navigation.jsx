@@ -43,10 +43,11 @@ export default function Navigation() {
           <button
             key={item}
             onClick={() => scrollToSection(index)}
-            className={`text-[14px] font-bold uppercase tracking-wider transition-all duration-300 ${
+            style={{ textDecoration: "none" }}
+            className={`text-[14px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
               activeSection === index
                 ? "text-white"
-                : "text-white/70 hover:text-white hover:border-b hover:border-white hover:pb-1"
+                : "text-white/70 hover:text-white"
               }`}
           >
             {item}

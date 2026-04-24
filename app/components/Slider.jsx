@@ -180,7 +180,7 @@ export default function Slider() {
         {/* Mobile-only: burgundy overlay driven by scroll progress */}
         <div
           ref={burgundyOverlayRef}
-          className={`absolute inset-0 bg-[#A8415B] transition-opacity duration-700 md:hidden ${
+          className={`absolute inset-0 bg-[#7A5901] transition-opacity duration-700 md:hidden ${
             activeIndex > 0 ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -191,7 +191,7 @@ export default function Slider() {
       {/* About panel — z-20 */}
       <div
         ref={panel1Ref}
-        className="fixed inset-0 z-20 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-20 text-center"
+        className="fixed inset-0 z-20 bg-[#7A5901] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
         <div className="max-w-[1200px] mx-auto">
           <p className="text-[30px] font-light leading-[1.75] mb-10 text-white">
@@ -206,7 +206,7 @@ export default function Slider() {
       {/* Contact panel — z-30 (on top of About) */}
       <div
         ref={panel2Ref}
-        className="fixed inset-0 z-30 bg-[#A8415B] hidden md:flex flex-col items-center justify-center px-12 text-center"
+        className="fixed inset-0 z-30 bg-[#7A5901] hidden md:flex flex-col items-center justify-center px-12 text-center"
       >
         <div className="flex flex-col items-center gap-5 md:gap-6 max-w-[900px]">
           <svg
@@ -252,7 +252,11 @@ export default function Slider() {
         className="fixed top-10 left-0 w-full z-[60] flex items-center justify-between pointer-events-none"
         style={{ paddingLeft: "max(3rem, 10vw)", paddingRight: "max(3rem, 10vw)" }}
       >
-        <div className="text-white font-semibold tracking-[0.12em] flex items-baseline pointer-events-auto" style={{ fontFamily: "var(--font-brix, 'DM Sans', sans-serif)" }}>
+        <div
+          className="text-white font-semibold tracking-[0.12em] flex items-baseline pointer-events-auto cursor-pointer"
+          style={{ fontFamily: "var(--font-brix, 'DM Sans', sans-serif)" }}
+          onClick={() => goToSection(0)}
+        >
           <span style={{ fontSize: "35px" }}>Northstar</span>
         </div>
 
@@ -275,12 +279,12 @@ export default function Slider() {
             <button
               key={item}
               onClick={() => goToSection(index)}
-              className={`group text-[14px] font-bold tracking-[0.2em] uppercase transition-all duration-300 relative ${
+              style={{ textDecoration: "none" }}
+              className={`group text-[14px] font-bold tracking-[0.2em] uppercase transition-all duration-300 relative cursor-pointer ${
                 activeIndex === index ? "text-white" : "text-white/70 hover:text-white"
               }`}
             >
               {item}
-              <span className="absolute left-0 -bottom-1 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
         </div>
@@ -289,7 +293,7 @@ export default function Slider() {
       {/* ── Mobile full-screen menu ── */}
       <div
         ref={menuOverlayRef}
-        className="fixed inset-0 bg-[#A8415B] z-50 hidden flex-col items-center justify-center"
+        className="fixed inset-0 bg-[#7A5901] z-50 hidden flex-col items-center justify-center"
       >
         <div className="flex flex-col gap-12 items-center">
           {navItems.map((item, index) => (
@@ -297,7 +301,7 @@ export default function Slider() {
               key={item}
               ref={(el) => { menuItemRefs.current[index] = el; }}
               onClick={() => goToSection(index)}
-              className={`relative group text-2xl font-bold tracking-[0.2em] uppercase transition-colors ${
+              className={`relative group text-2xl font-bold tracking-[0.2em] uppercase transition-colors cursor-pointer no-underline ${
                 activeIndex === index ? "text-white" : "text-white/70 hover:text-white"
               }`}
             >
@@ -320,7 +324,7 @@ export default function Slider() {
             onClick={() => goToSection(1)}
             className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
           >
-            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="white" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce opacity-80">
+            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="opacity-80" style={{ animation: "bounce 2s infinite" }}>
               <polyline points="4,7 10,13 16,7" />
             </svg>
           </button>
