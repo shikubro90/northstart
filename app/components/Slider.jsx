@@ -180,7 +180,7 @@ export default function Slider() {
         {/* Mobile-only: burgundy overlay driven by scroll progress */}
         <div
           ref={burgundyOverlayRef}
-          className={`absolute inset-0 bg-[#7A5901] transition-opacity duration-700 md:hidden ${
+          className={`absolute inset-0 bg-[#60460F] transition-opacity duration-700 md:hidden ${
             activeIndex > 0 ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -191,7 +191,7 @@ export default function Slider() {
       {/* About panel — z-20 */}
       <div
         ref={panel1Ref}
-        className="fixed inset-0 z-20 bg-[#7A5901] hidden md:flex flex-col items-center justify-center px-20 text-center"
+        className="fixed inset-0 z-20 bg-[#60460F] hidden md:flex flex-col items-center justify-center px-20 text-center"
       >
         <div className="max-w-[1200px] mx-auto">
           <p className="text-[30px] font-light leading-[1.75] mb-10 text-white">
@@ -206,7 +206,7 @@ export default function Slider() {
       {/* Contact panel — z-30 (on top of About) */}
       <div
         ref={panel2Ref}
-        className="fixed inset-0 z-30 bg-[#7A5901] hidden md:flex flex-col items-center justify-center px-12 text-center"
+        className="fixed inset-0 z-30 bg-[#60460F] hidden md:flex flex-col items-center justify-center px-12 text-center"
       >
         <div className="flex flex-col items-center gap-5 md:gap-6 max-w-[900px]">
           <svg
@@ -220,7 +220,7 @@ export default function Slider() {
           </svg>
           <a
             href="mailto:info@nstarassoc.com"
-            className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-[20px] sm:text-[22px] md:text-[24px] font-bold tracking-[0.04em] md:tracking-[0.08em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-[20px] sm:text-[22px] md:text-[24px] font-[500] tracking-[0.04em] md:tracking-[0.08em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
           >
             <svg
               width="24"
@@ -228,7 +228,7 @@ export default function Slider() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="rgba(255,255,255,0.75)"
-              strokeWidth="2.5"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
@@ -293,7 +293,7 @@ export default function Slider() {
       {/* ── Mobile full-screen menu ── */}
       <div
         ref={menuOverlayRef}
-        className="fixed inset-0 bg-[#7A5901] z-50 hidden flex-col items-center justify-center"
+        className="fixed inset-0 bg-[#60460F] z-50 hidden flex-col items-center justify-center"
       >
         <div className="flex flex-col gap-12 items-center">
           {navItems.map((item, index) => (
@@ -356,7 +356,7 @@ export default function Slider() {
             </svg>
             <a
               href="mailto:info@nstarassoc.com"
-              className="flex max-w-full flex-wrap items-center justify-center gap-2 text-[20px] sm:text-[22px] font-bold tracking-[0.04em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
+              className="flex max-w-full flex-wrap items-center justify-center gap-2 text-[20px] sm:text-[22px] font-[500] tracking-[0.04em] text-white/75 underline underline-offset-4 decoration-white/40 transition-all duration-300 hover:text-white hover:decoration-white"
             >
               <svg
                 width="24"
@@ -364,7 +364,7 @@ export default function Slider() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="rgba(255,255,255,0.75)"
-                strokeWidth="2.5"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 aria-hidden="true"

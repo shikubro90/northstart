@@ -19,7 +19,7 @@ export default function ContactSection() {
           quality={100}
         />
         {/* Burgundy overlay */}
-        <div className="absolute inset-0 bg-[#A8415B]/70"></div>
+        <div className="absolute inset-0 bg-[#60460F]"></div>
       </div>
 
       {/* Content */}
